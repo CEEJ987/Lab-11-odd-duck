@@ -33,18 +33,36 @@ function Product(name, filepath) {
 
   state.products = [boots, bag, pen, bubblegum, banana, chair, dragon, dogduck, unicorn, scissors, breakfast, watercan, wineglass, tauntaun, sweep, petsweep, shark];
   
-  function getRandomProducts(products) {
+  function getRandomProducts() {
     //the input to our function is an array of objects 
     //return an array of three random objects from input array
-    const shuffledArray = products.slice().sort(()=> Math.random() - 0.4);
+    let getrandom = [];
+    var displayedimgs = document.querySelectorAll('img')
+    var displayedurls = [];
+    for(let i = 0; i < 3; i++){
+        displayedurls.push(displayedimgs[i].getAttribute('src'))
+     }
+     while(getrandom.length < 3){
+        getrandom = Shuffledarray();
+        getrandom = getrandom.filter(singlerandom => {
+            return !displayedurls.includes(singlerandom.filepath
+        )})
+        
+
+     }
+     
+    return getrandom;
+  }
+  function Shuffledarray(){
+    const shuffledArray = state.products.slice().sort(()=> Math.random() - 0.4);
     const getrandom = shuffledArray.slice(0,3);
-    
     return getrandom;
   }
   
   function displayProducts() {
+      const randomProducts = getRandomProducts(state.products);
     productDisplay.innerHTML = "";
-    const randomProducts = getRandomProducts(state.products);
+
     randomProducts.forEach(product => {
       const img = document.createElement("img");
       img.src = product.filepath;
@@ -58,7 +76,7 @@ function Product(name, filepath) {
   }
   function IncrementCount(event) {
     if (event.target === productDisplay) {
-      alert('Please click on an image');
+     // alert('Please click on an image');
     }
     clicks++;
     let clickimg = event.target.alt;
