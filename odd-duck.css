@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(15, 83, 83);
+
+}
+#imgdisplay {
+    display: flex;
+    column-gap: 20px;
+    width: 300px;
+    height: 300px;
+   
+}
+#imgdisplay :hover {
+    border-color: rgb(82, 128, 135);
+    border: 10px;
+    
+}

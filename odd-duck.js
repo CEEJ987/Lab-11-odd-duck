@@ -100,16 +100,31 @@ function Product(name, filepath) {
   }
   
   function renderResults() {
-    let ul = document.querySelector('ul');
+    const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [boots.name, bag.name, pen.name, bubblegum.name, banana.name, chair.name, dragon.name, dogduck.name, unicorn.name, scissors.name, breakfast.name, watercan.name, wineglass.name, tauntaun.name, sweep.name, petsweep.name, shark.name],
+      datasets: [{
+        label: '# of Votes',
+        data: [boots.clicks, bag.clicks, pen.clicks, bubblegum.clicks, banana.clicks, chair.clicks, dragon.clicks, dogduck.clicks, unicorn.clicks, scissors.clicks, breakfast.clicks, watercan.clicks, wineglass.clicks, tauntaun.clicks, sweep.clicks, petsweep.clicks, shark.clicks],
+        borderWidth: 1,
+      }]
+    }
+  });
+    /*let ul = document.querySelector('ul');
     for (let i = 0; i < state.products.length; i++) {
       let li = document.createElement('li')
       li.textContent = `${state.products[i].name} had ${state.products[i].views} view and was clicked ${state.products[i].clicks} times.`;
       ul.appendChild(li);
-    }
+    }*/
   }
   
   productDisplay.addEventListener('click', IncrementCount);
   const favoriteBtn = document.querySelector("#favorite");
   favoriteBtn.addEventListener("click", displayProducts);
   const resultButton = document.querySelector("#resultButton");
+
  
+  
